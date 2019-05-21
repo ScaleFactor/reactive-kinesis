@@ -7,5 +7,6 @@ addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.5.1" exclude("org.eclipse.jg
 addSbtPlugin("org.scoverage" % "sbt-coveralls" % "1.2.2" exclude("org.eclipse.jgit", "org.eclipse.jgit"))
 
 addSbtPlugin("org.foundweekends" % "sbt-bintray" % "0.5.3")
+addSbtPlugin("com.frugalmechanic" % "fm-sbt-s3-resolver" % "0.16.0")
 
 libraryDependencies += "org.slf4j" % "slf4j-nop" % "1.7.25" // Needed by sbt-git
