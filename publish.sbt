@@ -17,8 +17,4 @@ pomIncludeRepository := { _ =>
 } //remove optional dependencies from our pom
 
 licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html"))
-scmInfo := Some(
-  ScmInfo(url("https://github.com/WW-Digital/reactive-kinesis"),
-          "scm:git@github.com:WW-Digital/reactive-kinesis.git")
-)
 publishMavenStyle := false 
