@@ -149,7 +149,7 @@ class KinesisSourceGraphStage(config: ConsumerConf,
   override def createLogic(inheritedAttributes: Attributes): GraphStageLogic =
     new GraphStageLogic(shape) {
       // KCL will read events in batches. The stream should be able to buffer the whole batch.
-      private[this] val bufferSize: Int = config.kclConfiguration.getMaxRecords
+      private[this] val bufferSize: Int = config.kclConfiguration.getMaxRecords * 20
       // The queue to buffer events that can not be pushed downstream.
       private[this] val messages = new java.util.ArrayDeque[CommittableEvent[ConsumerEvent]]()
       // The kinesis consumer to read from.
