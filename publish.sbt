@@ -1,9 +1,9 @@
 publishTo := {
   val defaultDestination = publishTo.value
   if (isSnapshot.value) {
-    Some(Resolver.url("Scalefactor Snapshots", url("s3://s3-us-west-2.amazonaws.com/scalefactor-libraries/snapshots"))(Resolver.ivyStylePatterns))
+    Some("Scalefactor Snapshots", "s3://s3-us-west-2.amazonaws.com/scalefactor-libraries/snapshots")
   } else {
-    Some(Resolver.url("Scalefactor Releases", url("s3://s3-us-west-2.amazonaws.com/scalefactor-libraries/releases"))(Resolver.ivyStylePatterns))
+    Some("Scalefactor Releases", "s3://s3-us-west-2.amazonaws.com/scalefactor-libraries/releases")
   }
 }
 
