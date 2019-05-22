@@ -1,9 +1,9 @@
 publishTo := {
   val defaultDestination = publishTo.value
   if (isSnapshot.value) {
-    Some(Resolver.url("Scalefactor Snapshots", url("s3://s3-us-west-2.amazonaws.com/scalefactor-libraries/reactive-kinesis/snapshots"))(Resolver.ivyStylePatterns))
+    Some(Resolver.url("Scalefactor Snapshots", url("s3://s3-us-west-2.amazonaws.com/scalefactor-libraries/snapshots/reactive-kinesis"))(Resolver.ivyStylePatterns))
   } else {
-    Some(Resolver.url("Scalefactor Releases", url("s3://s3-us-west-2.amazonaws.com/scalefactor-libraries/reactive-kinesis/releases"))(Resolver.ivyStylePatterns))
+    Some(Resolver.url("Scalefactor Releases", url("s3://s3-us-west-2.amazonaws.com/scalefactor-libraries/releases/reactive-kinesis"))(Resolver.ivyStylePatterns))
   }
 }
 
