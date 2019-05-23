@@ -89,7 +89,8 @@ class ConsumerWorkerSpec
                                batchRetries,
                                failureTolerance,
                                false,
-                               shutdownTimeout),
+                               shutdownTimeout,
+                               1),
             Props(new ChildForwarder(checkpointerProbe.ref))
           )
         )
