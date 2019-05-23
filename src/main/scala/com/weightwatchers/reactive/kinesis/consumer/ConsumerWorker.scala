@@ -60,14 +60,16 @@ object ConsumerWorker {
       *         failureTolerancePercentage = 0.25
       *         shutdownTimeoutSeconds = 5
       *         gracefulShutdownHook = true
+                expectedNumberOfShards = 1
       *      }
       * }}}
       */
     def apply(consumerConfig: Config): ConsumerWorkerConf = {
-      val shutdownHook         = consumerConfig.getBoolean("worker.gracefulShutdownHook")
-      val shutdownTimeout      = consumerConfig.getInt("worker.shutdownTimeoutSeconds").seconds
-      val batchTimeout         = consumerConfig.getInt("worker.batchTimeoutSeconds").seconds
-      val failedMessageRetries = consumerConfig.getInt("worker.failedMessageRetries")
+      val shutdownHook           = consumerConfig.getBoolean("worker.gracefulShutdownHook")
+      val shutdownTimeout        = consumerConfig.getInt("worker.shutdownTimeoutSeconds").seconds
+      val batchTimeout           = consumerConfig.getInt("worker.batchTimeoutSeconds").seconds
+      val failedMessageRetries   = consumerConfig.getInt("worker.failedMessageRetries")
+      val expectedNumberOfShards = consumerConfig.getInt("worker.expectedNumberOfShards")
       val failureTolerancePercentage =
         consumerConfig.getDouble("worker.failureTolerancePercentage")
 
@@ -75,7 +77,8 @@ object ConsumerWorker {
                              failedMessageRetries,
                              failureTolerancePercentage,
                              shutdownHook,
-                             Timeout(shutdownTimeout))
+                             Timeout(shutdownTimeout),
+                             expectedNumberOfShards)
     }
   }
 
@@ -93,7 +96,8 @@ object ConsumerWorker {
                                       failedMessageRetries: Int,
                                       failureTolerancePercentage: Double,
                                       shutdownHook: Boolean,
-                                      shutdownTimeout: Timeout)
+                                      shutdownTimeout: Timeout,
+                                      expectedNumberOfShards: Int)
 
   //TODO should these messages (sent to/from the processor) live in the models package?
   /**
